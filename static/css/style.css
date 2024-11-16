@@ -1,0 +1,537 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+*, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(223, 223, 223);
+}
+
+header {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    color: white;
+    justify-content: space-between;
+    width: 100vw;
+    height: 60px;
+    background-color: #506467;
+}
+
+header img {
+    width: 40px;
+    height: 50px;
+}
+
+header button {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: white;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+
+header button:hover{
+    font-size: 45px;
+    color: #cfcfcf;
+}
+
+.parent-categorias {
+    display: flex;
+    width: 100%;
+    height: 90vh;   
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.categorias {
+    padding: 0 25px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1650px;
+    height: 800px;
+    background-color: white;
+}
+
+.categorias a{
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    border-radius: 15px;
+    margin: 8px;
+    width: 100%;
+    height: 90%;
+    align-content: center;
+    background-color: #dfdfdf;
+    cursor: pointer;
+}
+
+.categoria-individual {
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    border-radius: 15px;
+    margin: 8px;
+    width: 100%;
+    height: 90%;
+    align-content: center;
+    background-color: #dfdfdf;
+}
+
+.categorias a:hover{
+    height: 95%;
+}
+
+.categoria-individual img {
+    width: 300px;
+    height: 300px;
+    padding: 40px;
+    margin-bottom: 50px;
+}
+
+.perguntas-parent{
+    display: flex;
+    width: 100%;
+    height: 90vh;   
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow-y: visible;
+}
+
+.perguntas{
+    border-radius: 5px;
+    height: 800px;
+    width: 100%;
+    max-width: 1650px;
+    background-color: #cfcfcf;
+    overflow-y: visible;
+}
+
+.busca {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    background-color: #506467;;
+    justify-content: center;
+    align-items: center;
+}
+
+.barra-busca {
+    display: flex;
+    padding: 0;
+    gap: 0; /* Remove o espaço entre o input e o botão */
+    margin-right: 10px; /* Ajuste conforme necessário para afastar da busca */
+    align-items: center;
+}
+
+.barra-busca input[type="search"] {
+    padding: 0;
+    padding: 5px;
+    height: 35px;
+    border: 0px;
+    outline: none;
+}
+
+.barra-busca button {
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    background-color: #2cf58d;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.busca button {
+    padding: 3px;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.busca-btn button{
+    color: #2cf58d;
+    background-color: transparent;
+    margin-right: 10px;
+}
+
+.login-parent {
+    display: flex;
+    font-family: "Inter", sans-serif;
+    width: 100%;
+    height: 100vh; /* Para ocupar a altura total da tela */
+    justify-content: space-around; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+  }
+  
+.login-container {
+    display: grid;
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 600px;
+    height: 720px;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  .login-container h1{
+    margin-top: 50px;
+    color: #2cf58d;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+  }
+
+.login-container form{
+    display: grid;
+    justify-self: center;
+    font-weight: 900;
+}
+
+.input-login input[type="text"]{
+    margin-bottom: 50px;
+}
+
+.input-login input[type="text"],input[type="password"]{
+    font-size: 16px;
+    padding: 20px;
+    width: 450px;
+    height: 65px;
+    outline: none;
+    border: none;
+    background-color: #cfcfcf;
+    border-radius: 30px;
+}
+
+.input-login input[type="text"]::placeholder,input[type="password"]::placeholder{
+    color: #a8a8a8;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+}
+
+.login-btn{
+    display: grid;
+}
+
+#entrar-btn{
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    width: 350px;
+    height: 65px;
+    border: none;
+    background-color: #2cf58d;
+    color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#registrar-btn{
+    margin-top: 15px;
+    width: 350px;
+    height: 65px;
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #2cf58d;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#entrar-btn:hover{
+    background-color: #1eac63;
+    color: #ffffff;
+}
+
+
+#registrar-btn:hover{
+    background-color: #1eac63;
+    color: #ffffff;
+}
+
+.perguntar-parent {
+    width: 100%;
+    height: 900px;
+    display: grid;
+    justify-content: center;  /* Centraliza horizontalmente */
+    align-items: center;      /* Centraliza verticalmente */
+    overflow: hidden;
+}
+
+/* .perguntar-child: Define as propriedades para limitar e centralizar */
+.perguntar-child {
+    display: flex;
+    padding: 65px;
+    border-radius: 10px;
+    width: 100%;              /* A largura ocupará 100% do espaço disponível */
+    max-width: 1600px;        /* Limita a largura a 1600px */
+    height: 100%;             /* A altura ocupa 100% da altura disponível */
+    max-height: 800px;        /* Limita a altura a 800px */
+    background-color: #ffffff;
+    justify-content: center;  /* Centraliza os itens internos, se houver */
+    align-items: center;      /* Centraliza os itens internos, se houver */
+}
+
+.perguntar-container{
+    display: grid;
+}
+
+.perguntar-container form{
+    display: grid;
+}
+
+.perguntar-container textarea{
+    padding: 15px;
+}
+
+.perguntar-btn{
+    display: flex;
+    margin-top: 50px;
+    justify-self: end;
+}
+
+#title-pergunta{
+    outline: none;
+    border-style: solid;
+    border-radius: 0;
+    border-width: 1px;
+    border-color: black;
+    padding: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #dfdfdf;
+    width: 460px;
+    height: 50px;
+    margin-bottom: 15px;
+    background-color: white;
+}
+
+#categoria-select{
+    padding: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    width: 460px;
+    height: 50px;
+    margin-bottom: 30px;
+}
+
+#postar-btn{
+    background-color: #2cf58d;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 180px;
+    height: 50px;
+    border: none;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#cancelar-btn{
+    background-color: #dfdfdf;
+    margin-left: 10px;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 180px;
+    height: 50px;
+    border: none;
+    color: #2cf58d;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#postar-btn:hover{
+    background-color: #1eac63;
+    color: #ffffff;
+}
+
+#cancelar-btn:hover{
+    background-color: #1eac63;
+    color: #ffffff;
+}
+
+.pergunta{
+    display: grid;
+    width: 100%;
+    justify-content: center;
+    overflow-y: visible;
+}
+
+.pergunta a{
+    text-decoration: none;
+    color: black;
+}
+
+
+.pergunta-individual{
+    display: flex;
+    font-family: "Inter", sans-serif;
+    margin: 10px;
+    width: 1500px;
+    height: 150px;
+    text-align: center;
+    background-color: #dfdfdf;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.pergunta-individual:hover{
+    width: 1600px;
+    height: 170px;
+    background-color: #a8a8a8;
+}
+
+.perguntas-parent::-webkit-scrollbar,
+.pergunta::-webkit-scrollbar,
+.perguntas::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+@media (max-width: 768px) {
+    .parent-categorias{
+        display: flex;
+        width: 95vw;
+        margin: 0 auto;
+    }
+    .categorias{
+        display: grid;
+        height: 750px;
+    }
+    .categoria-individual {
+        display: flex;
+        height: 125px;
+        width: 90%;
+        justify-content: space-evenly;
+        align-items: center;
+        text-align: center;
+    }
+
+    .login-parent img{
+        width: 0;
+        height: 0;
+    }
+
+    .perguntar-btn{
+        margin-top: 30px;
+        width: 90%;
+        display: grid;
+        justify-self: center;
+    }
+
+    #cancelar-btn{
+        width: 950%;
+        margin-top: 5px;
+        margin-left: 0;
+        border-radius: 10px;
+    }
+    #postar-btn{
+        width: 100%;
+    }
+
+    .login-parent{
+        margin: 0;
+    }
+
+    .perguntar-parent{
+        padding: 10px;
+    }
+
+    .perguntar-container{
+        display: grid;
+        width: 750px;
+        justify-items: center;
+        justify-content: center;
+    }
+
+    #title-pergunta, #categoria-select{
+        width: 280px;
+    }
+
+    #pergunta-text{
+        height: 400px;
+    }
+
+    .perguntar-child{
+        border-radius: 10px;
+        margin-bottom: 35px;
+    }
+
+    .perguntas{
+        width: 95%;
+    }
+
+    .perguntar-container textarea{
+        width: 95%;
+    }
+    
+    .perguntar-container form{
+        justify-content: center;
+        justify-items: center;
+    }
+
+    .categoria-individual img {
+        width: 90px;
+        height: 90px;
+        padding: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .pergunta-individual{
+        width: 375px;
+    }
+    .pergunta-individual h1{
+        font-size: 23px;
+    }
+
+    .pergunta-individual:hover{
+        width: 61vh;
+    }
+    .login-container{
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .login-container h1{
+        text-align: center;
+    }
+
+    .login-container input[type="text"], input[type="password"]{
+        width: 350px;
+    }
+
+}
