@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br" id="html-pergunta-completa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <title>IF Network</title>
+</head>
+<body id="pergunta-completa-body">
+  <header>
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" />
+    <h1>IF Network</h1>
+    <form action="/pergunta" method="GET">
+      <button type="submit" id="nova_pergunta">+</button>
+    </form>
+  </header>
+
+  <div class="header-commands">
+    <form action="/home" method="GET">
+      <button type="submit">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </button>
+    </form>
+    <button onclick="carregarRespostas()">
+      <span class="material-symbols-outlined">refresh</span>
+    </button>
+  </div>
+
+  <div class="pergunta-completa">
+    <h1>{{ pergunta.titulo }}</h1>
+    <h2>{{ pergunta.pergunta }}</h2>
+  </div>
+
+  <div class="responder-div">
+    <textarea
+      name="resposta"
+      id="responder-input"
+      placeholder="Digite sua resposta..."
+    ></textarea>
+    <button id="responder-btn" onclick="enviarResposta()">Postar</button>
+  </div>
+
+  <div id="respostas">
+    <!-- As respostas serão carregadas aqui -->
+  </div>
+
+  <script>
+    const perguntaId = {{ pergunta.idpergunta }};
+    const respostasDiv = document.getElementById("respostas");
+
+    // Função para carregar respostas
+    async function carregarRespostas() {
+      try {
+        const response = await fetch(`/respost/${perguntaId}`);
+        const respostas = await response.json();
+
+        respostasDiv.innerHTML = ""; // Limpa a div de respostas
+
+        if (respostas.length === 0) {
+          respostasDiv.innerHTML = '<div class="s-resp"><h1>Sem respostas ainda.</h1></div>';
+        } else {
+          respostas.forEach(resposta => {
+            const respostaElement = document.createElement("div");
+            respostaElement.classList.add("resposta");
+            respostaElement.innerHTML = `<p>${resposta.texto}</p>`;
+            respostasDiv.appendChild(respostaElement);
+          });
+        }
+      } catch (error) {
+        console.error("Erro ao carregar respostas:", error);
+      }
+    }
+
+    // Função para enviar uma resposta
+    async function enviarResposta() {
+      const respostaTexto = document.getElementById("responder-input").value;
+
+      if (!respostaTexto.trim()) {
+        alert("A resposta não pode estar vazia!");
+        return;
+      }
+
+      try {
+        const response = await fetch(`/respost/${perguntaId}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            texto: respostaTexto,
+            estudante: 40028922 // Substitua pelo ID real do estudante se necessário
+          })
+        });
+
+        if (response.ok) {
+          document.getElementById("responder-input").value = ""; // Limpa o campo de texto
+          carregarRespostas(); // Recarrega as respostas
+        } else {
+          alert("Erro ao postar a resposta!");
+        }
+      } catch (error) {
+        console.error("Erro ao enviar resposta:", error);
+      }
+    }
+
+    // Carrega as respostas quando a página for carregada
+    document.addEventListener("DOMContentLoaded", carregarRespostas);
+  </script>
+</body>
+</html>

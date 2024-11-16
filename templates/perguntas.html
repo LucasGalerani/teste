@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const categoria = "{{ categoria }}";
+        fetch(`/api/perguntas/${categoria}`)
+          .then((response) => response.json())
+          .then((perguntas) => {
+            const container = document.querySelector(".pergunta");
+            perguntas.forEach((pergunta) => {
+              const perguntaDiv = document.createElement("div");
+              perguntaDiv.innerHTML = `
+                <a href="/pergunta_completa/${pergunta.idpergunta}">
+                  <div class="pergunta-individual">
+                    <h1>${pergunta.titulo}</h1>
+                  </div>
+                </a>`;
+              container.appendChild(perguntaDiv);
+            });
+          })
+          .catch((error) =>
+            console.error("Erro ao carregar perguntas:", error)
+          );
+      });
+    </script>
+    <title>IF Network</title>
+  </head>
+  <body>
+    <header>
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" />
+      <h1>IF Network</h1>
+      <form action="/pergunta" method="GET">
+        <button type="submit" id="nova_pergunta">+</button>
+      </form>
+    </header>
+    <div class="perguntas-parent">
+      <div class="perguntas">
+        <div class="busca">
+          <div class="busca-btn">
+            <form action="/home" method="GET">
+              <button type="submit" id="voltar">
+                <span class="material-symbols-outlined"> arrow_back </span>
+              </button>
+            </form>
+          </div>
+          <div class="barra-busca">
+            <input type="search" name="" id="" />
+            <button>
+              <span class="material-symbols-outlined">search</span>
+            </button>
+          </div>
+        </div>
+        <div class="pergunta">
+          <!-- Perguntas carregadas via JS -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

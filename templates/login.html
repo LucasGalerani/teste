@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <title>IF Network - Login</title>
+  </head>
+  <body>
+
+    <div class="login-parent">
+      <img
+        src="{{ url_for('static', filename='images/aluno.png') }}"
+        alt="Logo"
+      />
+      <div class="login-container">
+        <h1>Bem-vindo de volta</h1>
+      <div class="input-login">
+      <form action="/login" id="invisible" method="POST">
+        <input type="text" placeholder="Usuário" name="usuario" id="">
+        <input type="password" placeholder="Senha" name="password" id="">
+      </div>
+        <div class="login-btn">
+          <button type="submit" onclick="cookie_escrever" id="entrar-btn">Entrar</button>
+        </form>
+        <form action="/registrar" method="GET">
+          <button id="registrar-btn">Registrar</button>
+        </form>
+        </div>   
+        </div>
+    </div>
+  </body>
+</html>

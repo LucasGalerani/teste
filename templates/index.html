@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF Network</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+        <h1>IF Network</h1>
+        <form action="/pergunta" method="GET">
+            <button type="submit" id="nova_pergunta">+</button>
+        </form>
+    </header>
+    <div class="parent-categorias">
+        <div class="categorias">
+            <a href="{{ url_for('info') }}" style="text-decoration: none; color: inherit;">
+                <div id="info-cat" class="categoria-individual">
+                    <img src="{{ url_for('static', filename='images/info.png') }}" alt="Informática">
+                    <h1>Informática</h1>
+                </div>
+            </a>
+            <a href="{{ url_for('ali') }}" style="text-decoration: none; color: inherit;">
+                <div class="categoria-individual">
+                    <img src="{{ url_for('static', filename='images/ali.png') }}" alt="Alimentos">
+                    <h1>Alimentos</h1>
+                </div>
+            </a>
+            <a href="{{ url_for('eletro') }}" style="text-decoration: none; color: inherit;">
+                <div class="categoria-individual">
+                    <img src="{{ url_for('static', filename='images/eletro.png') }}" alt="Eletrotécnica">
+                    <h1>Eletrotécnica</h1>
+                </div>
+            </a>
+            <a href="{{ url_for('mec') }}" style="text-decoration: none; color: inherit;">
+                <div class="categoria-individual">
+                    <img src="{{ url_for('static', filename='images/mec.png') }}" alt="Mecânica">
+                    <h1>Mecânica</h1>
+                </div>
+            </a>
+            <a href="{{ url_for('div') }}" style="text-decoration: none; color: inherit;">
+                <div class="categoria-individual">
+                    <img src="{{ url_for('static', filename='images/div.png') }}" alt="Diversos">
+                    <h1>Diversos</h1>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

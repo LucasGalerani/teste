@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Registro</title>
+</head>
+<body class="registrar-body ">
+    <div class="registrar-wrapper">
+        <div class="registrar-card">
+            <h2>Cadastro</h2>
+            <form action="/login" method="GET" class="form-register">
+                <div class="form-group">
+                    <input type="text" placeholder="Usuário" id="nome" required>
+                    <input type="email" placeholder="E-mail" id="email" required>
+                    <input type="password" placeholder="Senha" id="senha_registrar" required>
+                    <input type="password" placeholder="Confirmar Senha" id="confirmar_registrar" required>
+                </div>
+                <div class="form-group">
+                    <h3>Ano de nascimento</h3>
+                    <div class="dob-selects">
+                        <select id="yearOfBirth" required></select>
+                        <select id="monthOfBirth" required></select>
+                        <select id="dayOfBirth" required></select>
+                    </div>
+                    <h3>Ano de Ingresso</h3>
+                    <select id="ano_ingresso" required></select>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="CPF" id="cpf" required>
+                    <input type="text" placeholder="Número Matrícula" id="numero_matricula" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" id="cancelar-registro">Cancelar</button>
+                    <button type="button" id="confirmar-registro">Confirmar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const populateSelect = (select, start, end, placeholder) => {
+                const defaultOption = document.createElement("option");
+                defaultOption.value = "";
+                defaultOption.textContent = placeholder;
+                select.appendChild(defaultOption);
+    
+                for (let i = start; i <= end; i++) {
+                    const option = document.createElement("option");
+                    option.value = i;
+                    option.textContent = i;
+                    select.appendChild(option);
+                }
+            };
+    
+            const populateDays = (year, month, select) => {
+                select.innerHTML = "";
+                const defaultOption = document.createElement("option");
+                defaultOption.value = "";
+                defaultOption.textContent = "Dia";
+                select.appendChild(defaultOption);
+    
+                if (!year || !month) return;
+    
+                const daysInMonth = new Date(year, month, 0).getDate();
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const option = document.createElement("option");
+                    option.value = i;
+                    option.textContent = i.toString().padStart(2, '0');
+                    select.appendChild(option);
+                }
+            };
+    
+            const populateMonths = (select) => {
+                select.innerHTML = "";
+                const defaultOption = document.createElement("option");
+                defaultOption.value = "";
+                defaultOption.textContent = "Mês";
+                select.appendChild(defaultOption);
+    
+                for (let i = 1; i <= 12; i++) {
+                    const option = document.createElement("option");
+                    option.value = i;
+                    option.textContent = i.toString().padStart(2, '0');
+                    select.appendChild(option);
+                }
+            };
+    
+            const isValidCPF = (cpf) => {
+                cpf = cpf.replace(/\D/g, "");
+                if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+    
+                let sum = 0, remainder;
+                for (let i = 1; i <= 9; i++) sum += parseInt(cpf[i - 1]) * (11 - i);
+                remainder = (sum * 10) % 11;
+                if (remainder === 10 || remainder === 11) remainder = 0;
+                if (remainder !== parseInt(cpf[9])) return false;
+    
+                sum = 0;
+                for (let i = 1; i <= 10; i++) sum += parseInt(cpf[i - 1]) * (12 - i);
+                remainder = (sum * 10) % 11;
+                if (remainder === 10 || remainder === 11) remainder = 0;
+                return remainder === parseInt(cpf[10]);
+            };
+    
+            const isValidEmail = (email) => {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            };
+    
+            const yearOfBirthSelect = document.getElementById('yearOfBirth');
+            const monthOfBirthSelect = document.getElementById('monthOfBirth');
+            const dayOfBirthSelect = document.getElementById('dayOfBirth');
+            const ano_ingressoSelect = document.getElementById('ano_ingresso');
+            const currentYear = new Date().getFullYear();
+    
+            populateSelect(yearOfBirthSelect, currentYear - 25, currentYear, "Ano");
+            populateMonths(monthOfBirthSelect);
+    
+            yearOfBirthSelect.addEventListener("change", () => {
+                populateDays(yearOfBirthSelect.value, monthOfBirthSelect.value, dayOfBirthSelect);
+            });
+    
+            monthOfBirthSelect.addEventListener("change", () => {
+                populateDays(yearOfBirthSelect.value, monthOfBirthSelect.value, dayOfBirthSelect);
+            });
+    
+            populateSelect(ano_ingressoSelect, currentYear - 10, currentYear, "Ano");
+    
+            document.getElementById('confirmar-registro').addEventListener('click', () => {
+                const nome = document.getElementById('nome').value;
+                const email = document.getElementById('email').value;
+                const senha = document.getElementById('senha_registrar').value;
+                const confirmarSenha = document.getElementById('confirmar_registrar').value;
+                const cpf = document.getElementById('cpf').value;
+                const numeroMatricula = document.getElementById('numero_matricula').value;
+                const yearOfBirth = document.getElementById('yearOfBirth').value;
+                const monthOfBirth = document.getElementById('monthOfBirth').value;
+                const dayOfBirth = document.getElementById('dayOfBirth').value;
+                const anoIngresso = document.getElementById('ano_ingresso').value;
+    
+                if (senha !== confirmarSenha) {
+                    alert('As senhas não coincidem.');
+                    return;
+                }
+    
+                if (!isValidCPF(cpf)) {
+                    alert('CPF inválido.');
+                    return;
+                }
+    
+                if (!isValidEmail(email)) {
+                    alert('Email inválido.');
+                    return;
+                }
+    
+                const dataNasc = `${yearOfBirth}-${monthOfBirth.padStart(2, '0')}-${dayOfBirth.padStart(2, '0')}`;
+                const payload = {
+                    nome,
+                    email,
+                    senha,
+                    data_nasc: dataNasc,
+                    data_entrada: anoIngresso,
+                    cpf,
+                    numero_matricula: numeroMatricula
+                };
+    
+                fetch('api/usuarios', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    alert('Usuário registrado com sucesso!');
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('Ocorreu um erro ao registrar o usuário.');
+                });
+            });
+    
+            document.getElementById('cancelar-registro').addEventListener('click', (event) => {
+                event.preventDefault();
+                document.querySelector('.form-register').reset();
+                window.location.href = "/login";
+            });
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <title>IF Network</title>
+  </head>
+  <body>
+    <header>
+      <img
+        src="{{ url_for('static', filename='images/logo.png') }}"
+        alt="Logo"
+      />
+      <h1>IF Network</h1>
+      <form action="/pergunta" method="GET">
+        <button type="submit" id="nova_pergunta">+</button>
+      </form>
+    </header>
+
+    <div class="perguntar-parent">
+      <div class="perguntar-child">
+        <div class="perguntar-container">
+          <input
+            type="text"
+            name="title"
+            placeholder="Título da pergunta"
+            id="title-pergunta"
+          />
+          <select id="categoria-select" name="categoria">
+            <option value="info">Informática</option>
+            <option value="ali">Alimentos</option>
+            <option value="eletro">Eletrotécnica</option>
+            <option value="mec">Mecânica</option>
+            <option value="div">Diversos</option>
+          </select>
+
+          <textarea
+            name="text"
+            id="pergunta-text"
+            cols="200"
+            rows="30"
+            placeholder="Digite sua pergunta aqui..."
+          ></textarea>
+
+          <div class="perguntar-btn">
+            <button id="postar-btn" type="button">Postar</button>
+            <form action="/home" method="GET">
+              <button id="cancelar-btn" type="submit">Cancelar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("postar-btn")
+        .addEventListener("click", function () {
+          const title = document.getElementById("title-pergunta").value.trim();
+          const categoria = document.getElementById("categoria-select").value;
+          const text = document.getElementById("pergunta-text").value.trim();
+
+          if (!title || !text) {
+            alert("Por favor, preencha todos os campos antes de postar.");
+            return;
+          }
+
+          const perguntaData = {
+            titulo: title,
+            pergunta: text,
+            categoria: categoria,
+          };
+
+          fetch("/questions", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(perguntaData),
+          })
+            .then((response) => {
+              if (response.ok) {
+                window.location.href = "/home";
+              } else {
+                response.json().then((data) => {
+                  alert(
+                    `Erro ao enviar pergunta: ${
+                      data.message || "Erro desconhecido."
+                    }`
+                  );
+                });
+              }
+            })
+            .catch((error) => {
+              console.error("Erro:", error);
+              alert("Erro ao enviar pergunta. Verifique sua conexão.");
+            });
+        });
+    </script>
+  </body>
+</html>
