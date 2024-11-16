@@ -1,0 +1,300 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(223, 223, 223);
+    font-family: "Inter", sans-serif;
+}
+
+header {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    background-color: #506467;
+    color: white;
+}
+
+header img {
+    width: 40px;
+    height: 50px;
+}
+
+header button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: transparent;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 40px;
+    color: inherit;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+header button:hover {
+    font-size: 45px;
+    color: #cfcfcf;
+}
+
+.pergunta-completa {
+    display: grid;
+    place-items: center;
+    padding: 50px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1500px;
+    height: 760px;
+    background-color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.pergunta-completa h1 {
+    font-weight: bold;
+}
+
+.pergunta-completa h2 {
+    font-weight: normal;
+    overflow: hidden;
+}
+
+.header-commands {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px auto 0;
+    padding: 0 20px;
+    height: 60px;
+    background-color: #2cf58d;
+    width: 100%;
+    max-width: 1500px;
+}
+
+.header-commands button {
+    padding: 20px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.responder-div {
+    margin: 0 auto;
+    display: flex;
+    max-width: 1500px;
+}
+
+.responder-div form {
+    margin: 0 auto;
+    display: flex;
+    max-width: 1500px;
+}
+
+#responder-input {
+    padding: 10px;
+    background-color: white;
+    border: 2px solid #2cf58d;
+    width: 1350px;
+    resize: none;
+    font-family: "Inter", sans-serif;
+    outline: none;
+    font-size: 16px;
+    color: #333;
+    overflow: hidden;
+}
+
+#responder-btn {
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    font-size: large;
+    width: 150px;
+    background-color: #2cf58d;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#responder-btn:hover {
+    background-color: #1eac63;
+}
+
+.resposta {
+    margin: 50px auto;
+    word-wrap: break-word;
+    width: 1500px;
+    padding: 50px;
+    height: auto;
+    background-color: #ffffff;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.s-resp {
+    text-align: center;
+    background-color: #abeecc;
+    width: 450px;
+    padding: 30px;
+    margin: 50px auto;
+}
+
+@media (max-width: 768px) {
+    .header-commands {
+        width: 400px;
+    }
+
+    .pergunta-completa {
+        width: 400px;
+    }
+
+    #responder-input {
+        width: 325px;
+    }
+
+    #responder-btn {
+        font-size: 15px;
+        width: 75px;
+    }
+
+    .responder-div {
+        width: 400px;
+    }
+
+    .resposta {
+        width: 400px;
+    }
+
+    .s-resp {
+        width: 400px;
+        padding: 20px;
+        font-size: 13px;
+    }
+}
+
+.registrar-body {
+    background-color: #f0f2f5;
+    font-family: "Inter", sans-serif;
+}
+
+.registrar-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.registrar-card {
+    width: 100%;
+    max-width: 450px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.registrar-body h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.registrar-body h3 {
+    margin-bottom: 10px;
+}
+
+.form-register {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.registrar-body input[type="text"],
+.registrar-body input[type="email"],
+.registrar-body input[type="password"],
+.registrar-body select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.registrar-body input[type="text"]:focus,
+.registrar-body input[type="email"]:focus,
+.registrar-body input[type="password"]:focus,
+.registrar-body select:focus,
+.registrar-body input[type="text"]:hover,
+.registrar-body input[type="email"]:hover,
+.registrar-body input[type="password"]:hover,
+.registrar-body select:hover     {
+    appearance: none;
+    -webkit-appearance: none; /* Para navegadores Webkit/Safari */
+    -moz-appearance: none;
+    border-color: #2cf58d !important;
+    outline: none;
+    box-shadow: none;
+}
+
+.dob-selects {
+    display: flex;
+    gap: 12px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.registrar-body button {
+    background-color: transparent;
+    color: #2cf58d;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.registrar-body button[type="button"] {
+    background-color: #2cf58d;
+    color: white;
+}
+
+.registrar-body button:hover {
+    background-color: #1eac63;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .registrar-card {
+        padding: 20px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        margin-bottom: 10px;
+    }
+}
